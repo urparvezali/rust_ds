@@ -59,13 +59,15 @@ impl SegmentedSieve {
             v[0] = false;
         }
 
-        for i in 2..=r.isqrt() {
-            let mut start = ((l + i - 1) / i) * i;
-            if start < i * 2 {
-                start = i * 2;
+        let base_primes = Sieve::new(r.isqrt()).primes();
+
+        for &p in &base_primes {
+            let mut start = (l + p - 1) / p * p;
+            if start < p * p {
+                start = p * p;
             }
 
-            for j in (start..=r).step_by(i) {
+            for j in (start..=r).step_by(p) {
                 v[j - l] = false;
             }
         }

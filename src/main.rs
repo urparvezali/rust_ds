@@ -1,12 +1,8 @@
-use std::time::Instant;
-
-use crate::userstd::sieve::SegmentedSieve;
+use crate::userstd::heap;
 
 mod userstd;
 
 fn main() {
-    let time = Instant::now();
-    let ss = SegmentedSieve::new(5, 10000000);
-    println!("{:?}", ss.is_prime(500003));
-    println!("{:?}", time.elapsed());
+    let myvec = [7, 3, 1, 5, 2, 4, 6];
+    println!("{:?}", heap::heap_sort(&myvec, heap::HeapSortType::Min));
 }
